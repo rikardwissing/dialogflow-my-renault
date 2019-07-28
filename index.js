@@ -190,5 +190,9 @@ app.intent("start-hvac", startHVAC);
 
 expressApp.post("/", app);
 
+expressApp.get("/", (req, res) => {
+  res.send("ok");
+});
+
 console.log("Listening on port 3000");
 expressApp.listen(3000);
