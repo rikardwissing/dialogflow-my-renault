@@ -128,15 +128,20 @@ const getMileage = async conv => {
 
 const getBatteryStatus = async conv => {
   try {
+    console.log("Trying to get my car");
     const myCar = await getCar(conv);
+    console.log("Trying to get battery status");
     const batteryStatus = await myCar.fetchBatteryStatus();
+    console.log(batteryStatus.batteryLevel);
 
     if (batteryStatus.batteryLevel === 100) {
       conv.add(`Mitt batteri är fulladdat så det är bara ut och köra.`);
     } else {
       conv.add(`Jag har cirka ${batteryStatus.batteryLevel}% batteri kvar.`);
     }
-  } catch (err) {}
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const getBatteryRange = async conv => {
